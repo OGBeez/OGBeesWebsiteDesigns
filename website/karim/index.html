@@ -945,6 +945,8 @@ html body [data-wv][data-wv]{font-weight:var(--wv,400)}
 html[lang="ar"] .svc-eb,html[lang="ar"] .svc-txt h3,html[lang="ar"] .svc-txt p,html[lang="ar"] .svc-h b,html[lang="ar"] .svc-h i{font-family:"Alexandria",sans-serif}
 html[lang="ar"] .svc .sec-h h2.svc-h{font-size:5.5em;line-height:1.2}
 html[lang="ar"] .svc-txt h3{font-size:3.6em;line-height:1.1}html[lang="ar"] .svc-txt p{font-size:1.5em;line-height:1.35}html[lang="ar"] .svc-eb{font-size:1.8em}
+/* four 28em cards at scale .9 take ~101em: shrink the row so it fits between 761px and ~1200px (tablets) */
+@media (min-width:761px){.svc-list{font-size:min(1em,calc((100vw - 64px)/101))}}
 @media (max-width:760px){
   .svc{font-size:12px;padding-block:5em}
   .svc .sec-h h2.svc-h{font-size:5.4em}
