@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OGBees Website Designs</title>
+<style>
+:root{--bg:#f6f5f2;--fg:#1a1a1a;--muted:#6b6b6b;--line:#dcdad4;--accent:#e0a100;--tab:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--muted:#9a9a9a;--line:#2e2e2e;--accent:#f5b800;--tab:#1e1e1e}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:14px/1.4 system-ui,sans-serif}
+body{display:flex;flex-direction:column}
+header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line)}
+h1{font-size:15px;margin:0 12px 0 0}
+button{font:inherit;padding:6px 12px;border:1px solid var(--line);background:var(--tab);color:var(--fg);border-radius:6px;cursor:pointer}
+button[aria-pressed=true]{border-color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
+a{color:var(--muted);margin-left:auto}
+main{flex:1;display:grid;grid-template-columns:1fr;min-height:0}
+main.both{grid-template-columns:1fr 1fr}
+section{display:flex;flex-direction:column;min-height:0;border-right:1px solid var(--line)}
+section:last-child{border-right:0}
+section h2{margin:0;padding:6px 16px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border-bottom:1px solid var(--line)}
+iframe{flex:1;width:100%;border:0;background:#fff}
+[hidden]{display:none!important}
+@media (max-width:700px){main.both{grid-template-columns:1fr;grid-template-rows:1fr 1fr}section{border-right:0;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<header>
+  <h1>OGBees UX/UI Designs — Website</h1>
+  <button data-view="both" aria-pressed="true">Side by side</button>
+  <button data-view="karim" aria-pressed="false">Karim</button>
+  <button data-view="gamal" aria-pressed="false">Gamal</button>
+  <a id="open" href="karim/index.html" target="_blank" hidden>Open full page ↗</a>
+</header>
+<main class="both">
+  <section id="karim"><h2>Karim draft</h2><iframe src="karim/index.html" title="Karim draft"></iframe></section>
+  <section id="gamal"><h2>Gamal draft</h2><iframe src="gamal/index.html" title="Gamal draft"></iframe></section>
+</main>
+<script>
+const main=document.querySelector('main'),open=document.getElementById('open');
+document.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+  const v=b.dataset.view;
+  document.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  main.className=v==='both'?'both':'';
+  karim.hidden=v==='gamal';gamal.hidden=v==='karim';
+  open.hidden=v==='both';open.href=v+'/index.html';
+});
+</script>
+</body>
+</html>
